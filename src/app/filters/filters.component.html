@@ -1,0 +1,29 @@
+<div class="ui-g test">
+    <div class="ui-g-2">
+      <h3 class="filterTitle">Media</h3>
+      <p-multiSelect [options]="media" [(ngModel)]="selectedMedia" optionLabel="name" maxSelectedLabels="1">
+      </p-multiSelect>
+    </div>
+    <div class="ui-g-2">
+      <h3 class="filterTitle">Style</h3>
+      <p-multiSelect [options]="style" [(ngModel)]="selectedStyle" optionLabel="name" maxSelectedLabels="1">
+      </p-multiSelect>
+    </div>
+    <div class="ui-g-2">
+      <h3 class="filterTitle">Artiste</h3>
+      <p-multiSelect [options]="author" [(ngModel)]="selectedAuthor" optionLabel="name" maxSelectedLabels="1">
+      </p-multiSelect>
+    </div>
+    <div class="ui-g-2">
+      <h3 class="filterTitle">Genre</h3>
+      <p-multiSelect [options]="genre" [(ngModel)]="selectedGenre" optionLabel="name" maxSelectedLabels="1">
+      </p-multiSelect>
+    </div>
+    <div class="ui-g-2">
+      <h3 class="metricTitle">Metric</h3>
+      <p-dropdown [options]="metrics" [(ngModel)]="selectedMetric" optionLabel="name"></p-dropdown>
+    </div>
+    <div class="ui-g-2 align">
+      <button class="ui-button-rounded" pButton type="button" label="Validate" (click)="onClickSubmit()"></button>
+    </div>
+</div>
