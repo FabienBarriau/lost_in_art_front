@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs'
-
+import { environment } from './../environments/environment';
 
 @Injectable()
 export class ImgsService {
 
   private _httpClient: HttpClient;
-  private _paintingsPosition = 'http://localhost:5000/api/v1/paintingsPosition';
-  private _paintingsDetails = 'http://localhost:5000/api/v1/paintingsDetail';
+  private _paintingsPosition = environment.apiUrl.concat('paintingsPosition');
+  private _paintingsDetails = environment.apiUrl.concat('paintingsDetail');
 
   constructor(private _httpclient: HttpClient) {
   }

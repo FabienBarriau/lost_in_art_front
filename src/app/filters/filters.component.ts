@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SelectItem } from 'primeng/api';
 import { HttpClient } from '@angular/common/http';
 import { ImgsService } from '../services/imgs.service';
+import { environment } from './../environments/environment';
 
 interface nameCode {
     name: string,
@@ -15,7 +16,7 @@ interface nameCode {
 })
 export class FiltersComponent implements OnInit{
 
-  private _categoriesList = 'http://localhost:5000/api/v1/categories';
+  private _categoriesList = environment.apiUrl.concat('categories');
 
   media: nameCode[];
   style: nameCode[];
