@@ -63,7 +63,16 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "staging": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.staging.ts"
+                }
+              ]
             }
+
           }
         },
         "serve": {
@@ -74,6 +83,9 @@
           "configurations": {
             "production": {
               "browserTarget": "wikiArtApp:build:production"
+            },
+            "staging": {
+              "browserTarget": "wikiArtApp:build:staging"
             }
           }
         },
