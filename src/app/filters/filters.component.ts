@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SelectItem } from 'primeng/api';
 import { HttpClient } from '@angular/common/http';
 import { ImgsService } from '../services/imgs.service';
-import { environment } from './../environments/environment';
+import { environment } from 'src/environments/environment';
 
 interface nameCode {
     name: string,
