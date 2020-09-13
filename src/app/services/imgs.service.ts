@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs'
 import { environment } from 'src/environments/environment';
 
@@ -19,20 +19,24 @@ export class ImgsService {
   public initialDensity: number;
 
   updateImgs(genres, styles, media, author, metric){
-    let params = {}
-    params["metric"] = metric
-    if(genres !== null) params["genres"] = genres
-    if(styles !== null) params["styles"] = styles
-    if(media !== null) params["media"] = media
-    if(author !== null) params["artistName"] = author
-    console.log(params)
+    var paramsObject = {}
+    paramsObject["metric"] = metric
+    if(genres !== null) paramsObject["genres"] = genres
+    if(styles !== null) paramsObject["styles"] = styles
+    if(media !== null) paramsObject["media"] = media
+    if(author !== null) paramsObject["artistName"] = author
+    let params = new HttpParams({ fromObject: paramsObject });
     this._httpclient.get(this._paintingsPosition, {params: params}).subscribe(
     paintingsPositionResponse => {
       const boundingBox = paintingsPositionResponse['bounding_box']
       const imgs = paintingsPositionResponse['data']
       const l = (boundingBox['x_max'] - boundingBox['x_min'])
       const h = (boundingBox['y_max'] - boundingBox['y_min'])
-      this.initialDensity = imgs.length/(l*h)
+      if(imgs.length > 1){
+        this.initialDensity = imgs.length/(l*h)
+      } else {
+        this.initialDensity = 0.002
+      }
       this.imgs.next(imgs);
       this.details.next([]);
     })
