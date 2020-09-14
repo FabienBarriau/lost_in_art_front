@@ -43,8 +43,8 @@ export class FiltersComponent implements OnInit{
     ];
     this.selectedMedia = [];
     this.selectedStyle = [];
-    this.selectedAuthor = [];
     this.selectedGenre = [];
+    this.selectedAuthor = [];
     this.selectedMetric = {name: 'Content', code: 'encoding'}
   }
 
@@ -59,8 +59,7 @@ export class FiltersComponent implements OnInit{
     );
   }
 
-  onClickSubmit() {
-    console.log(this.selectedMetric)
+  onClickSubmitValidate() {
     let genres = null;
     if(this.selectedGenre.length != 0) genres = this.selectedGenre.map(item => item.code);
     let styles = null;
@@ -71,6 +70,29 @@ export class FiltersComponent implements OnInit{
     if(this.selectedAuthor.length != 0) author = this.selectedAuthor.map(item => item.code);
     let metric = this.selectedMetric["code"]
     this.imgsService.updateImgs(genres, styles, media, author, metric);
+  }
+
+  onClickSubmitRandom() {
+    this.selectedMedia = [];
+    this.selectedStyle = [];
+    this.selectedGenre = [];
+    this.selectedAuthor = [];
+
+    function getRandomInt(max) {
+      return Math.floor(Math.random() * Math.floor(max));
+    }
+    let dropDownList = [this.media, this.genre, this.style, this.author]
+    let selectedDropDownList = [this.selectedMedia, this.selectedGenre, this.selectedStyle, , this.selectedAuthor]
+    let whichFilter = getRandomInt(4)
+    for(let i=0;i<=getRandomInt(4);i++){
+      selectedDropDownList[whichFilter].push(dropDownList[whichFilter][getRandomInt(dropDownList[whichFilter].length)])
+    }
+
+    this.selectedMetric = this.metrics[getRandomInt(2)]
+
+    console.log(this.selectedMedia, this.selectedStyle, this.selectedGenre,
+    this.selectedAutho, this.selectedMetric)
+
   }
 
 }
