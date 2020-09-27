@@ -82,16 +82,13 @@ export class FiltersComponent implements OnInit{
       return Math.floor(Math.random() * Math.floor(max));
     }
     let dropDownList = [this.media, this.genre, this.style, this.author]
-    let selectedDropDownList = [this.selectedMedia, this.selectedGenre, this.selectedStyle, , this.selectedAuthor]
+    let selectedDropDownList = [this.selectedMedia, this.selectedGenre, this.selectedStyle, this.selectedAuthor]
     let whichFilter = getRandomInt(4)
     for(let i=0;i<=getRandomInt(4);i++){
       selectedDropDownList[whichFilter].push(dropDownList[whichFilter][getRandomInt(dropDownList[whichFilter].length)])
     }
 
     this.selectedMetric = this.metrics[getRandomInt(2)]
-
-    console.log(this.selectedMedia, this.selectedStyle, this.selectedGenre,
-    this.selectedAutho, this.selectedMetric)
 
   }
 
