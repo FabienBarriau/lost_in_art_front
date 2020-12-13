@@ -30,6 +30,9 @@
       <div class="gallery-container" *ngFor="let gallery of detail.galleries">
         <p class="gallery"> {{ gallery }} </p>
       </div>
+      <div>
+        <button pButton (click)="goToRecommandation(detail.paintingId)" type="button" icon="pi pi-search" class="p-button-raised p-button-rounded"></button>
+      </div>
   </p-card>
 </p-scrollPanel>
 </ng-template>

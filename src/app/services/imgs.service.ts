@@ -6,7 +6,6 @@ import { environment } from 'src/environments/environment';
 @Injectable()
 export class ImgsService {
 
-  private _httpClient: HttpClient;
   private _paintingsPosition = environment.apiUrl.concat('paintingsPosition');
   private _paintingsDetails = environment.apiUrl.concat('paintingsDetail');
 

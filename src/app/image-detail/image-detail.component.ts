@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ImgsService } from '../services/imgs.service';
+import { RecommandationService } from '../services/recommandation.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-image-detail',
@@ -10,13 +12,21 @@ export class ImageDetailComponent implements OnInit {
 
   details = []
 
-  constructor(private imgsService: ImgsService) {
+  constructor(
+    private imgsService: ImgsService,
+    private recommandationService: RecommandationService,
+    private router: Router) {
     this.imgsService.details.subscribe(valeur => {
       this.details = valeur;
     });
   }
 
   ngOnInit(): void {
+  }
+
+  goToRecommandation(art_id: string){
+    this.recommandationService.getRecommandation(art_id, 5, 'encoding')
+    this.router.navigateByUrl('/recommandation')
   }
 
 }
