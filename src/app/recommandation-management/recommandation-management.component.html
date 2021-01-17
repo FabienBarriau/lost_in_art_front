@@ -1,0 +1,21 @@
+<p-card header="{{ imgOfIinterest[0].title }}" subheader="{{ imgOfIinterest[0].artistName }}" [style]="{width: '100%'}"  styleClass="ui-card-shadow">
+  <img src="{{ imgOfIinterest[0].image }}" height="200">
+</p-card>
+<p-card header="Manage recommandation" [style]="{width: '100%'}"  styleClass="ui-card-shadow">
+  <div class="ui-g">
+    <div class="ui-g-6">
+      <h3 class="metricTitle">Type of similarity</h3>
+      <p-dropdown [options]="metrics" [(ngModel)]="selectedMetric" optionLabel="name"></p-dropdown>
+    </div>
+    <div class="ui-g-6">
+      <h3 class="metricTitle">Number</h3>
+      <p-inputNumber [(ngModel)]="nbrRecommandation" [style]="{'width': '50px'}"></p-inputNumber>
+    </div>
+  </div>
+  <div>
+    <button class="ui-button-rounded" pButton type="button" label="Update settings" (click)="onClickSubmitNewRecommandation()"></button>
+  </div>
+</p-card>
+<p-card header="Import your own image" [style]="{width: '100%'}"  styleClass="ui-card-shadow">
+  <p-fileUpload #fubauto mode="basic" name="myfile[]" url="./upload.php" accept="image/*" maxFileSize="1000000" chooseLabel="Browse"></p-fileUpload>
+</p-card>

@@ -6,26 +6,71 @@ import { environment } from 'src/environments/environment';
 @Injectable()
 export class RecommandationService {
 
-  private paintingRecommendation = environment.apiUrl.concat('paintingRecommendation');
+  private _paintingRecommendation = environment.apiUrl.concat('paintingRecommendation');
+  private _paintingsDetails = environment.apiUrl.concat('paintingsDetail');
 
   constructor(private _httpclient: HttpClient) { }
+  public imgOfIinterest = new BehaviorSubject([{
+    "paintingId": "57726f3aedc2cb3880b9eb12",
+    "title": "The Grande Odalisque",
+    "artistName": "Jean Auguste Dominique Ingres",
+    "image": "https://uploads8.wikiart.org/images/jean-auguste-dominique-ingres/the-grande-odalisque-1814.jpg!Large.jpg"
+  }]);
+  public imgs = new BehaviorSubject([
+    {
+      "paintingId": "5772752eedc2cb3880cd9f28",
+      "title": "The Rokeby Venus",
+      "artistName": "Diego Velázquez",
+      "image": "https://uploads8.wikiart.org/images/diego-velazquez/the-rokeby-venus-1648.jpg!Large.jpg"
+    },
+    {
+      "paintingId": "57726e37edc2cb3880b6291e",
+      "title": "Ecce Homo",
+      "artistName": "Caravaggio",
+      "image": "https://uploads3.wikiart.org/images/caravaggio/ecce-homo(1).jpg!Large.jpg",
+    },
+    {
+      "paintingId": "57727d9fedc2cb3880e86053",
+      "title": "Crucification",
+      "artistName": "Ernst Fuchs",
+      "image": "https://uploads1.wikiart.org/images/ernst-fuchs/crucification-1950.jpg!Large.jpg",
+    },
+  ]);
+  public nbrRecommandation: number = 3;
+  public metric: string = 'encoding';
 
-  public imgs = new BehaviorSubject([]);
-
-  getRecommandation(art_id, nbr, metric){
-    console.log("salut")
-    var paramsObject = {}
-    paramsObject["art_id"] = art_id
-    paramsObject["nbr"] = nbr
-    paramsObject["metric"] = metric
-    let params = new HttpParams({ fromObject: paramsObject });
-    console.log(paramsObject)
-    this._httpclient.get(this.paintingRecommendation, {params: params}).subscribe(
+  getRecommandation(art_id){
+    // Update recommanded images
+    var paramsObjectRecommandedImgs = {};
+    paramsObjectRecommandedImgs["art_id"] = art_id;
+    paramsObjectRecommandedImgs["nbr"] = this.nbrRecommandation;
+    paramsObjectRecommandedImgs["metric"] = this.metric;
+    this._httpclient.get(
+      this._paintingRecommendation,
+      {params: new HttpParams({ fromObject: paramsObjectRecommandedImgs })}
+    ).subscribe(
     paintingRecommendationResponse => {
-      const imgs = paintingRecommendationResponse['data']
-      console.log(imgs)
-      this.imgs.next(imgs);
+      this.imgs.next(paintingRecommendationResponse['data']);
     })
+    // Update image of interest
+    var paramsObjecImgOfInterest = {};
+    paramsObjecImgOfInterest["ids"] = [art_id];
+    this._httpclient.get(
+      this._paintingsDetails,
+      {params: new HttpParams({ fromObject: paramsObjecImgOfInterest })}
+    ).subscribe(
+    paintingsDetailsResponse => {
+      this.imgOfIinterest.next(paintingsDetailsResponse['data'])
+    })
+    console.log(this.imgOfIinterest)
+  }
+
+  setNbrRecommandation(nbr: number){
+    this.nbrRecommandation = nbr
+  }
+
+  setMetric(metric: string){
+    this.metric = metric
   }
 
 }

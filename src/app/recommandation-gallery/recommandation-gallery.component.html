@@ -1,0 +1,17 @@
+<p-galleria [(value)]="imgs" [numVisible]="3" [(activeIndex)]="activeIndex">
+    <ng-template pTemplate="item" let-item>
+        <div class="img-container">
+          <img [src]="item.image" style="height: 400px;" />
+        </div>
+    </ng-template>
+    <ng-template pTemplate="thumbnail" let-item>
+        <div class="p-grid p-nogutter p-justify-center">
+            <img [src]="item.image" style="height: 100px;"/>
+        </div>
+    </ng-template>
+</p-galleria>
+<p-card header="{{ imgs[_activeIndex].title }}" subheader="{{ imgs[_activeIndex].artistName }}" [style]="{width: '100%'}">
+<div>
+  <button pButton (click)="updateRecommandation()" type="button" icon="pi pi-search" class="p-button-raised p-button-rounded"></button>
+</div>
+</p-card>

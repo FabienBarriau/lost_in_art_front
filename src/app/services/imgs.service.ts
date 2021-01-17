@@ -48,7 +48,6 @@ export class ImgsService {
       this._httpclient.get(this._paintingsDetails, {params: params}).subscribe(
       paintingsDetailsResponse => {
         this.details.next(paintingsDetailsResponse['data'])
-        console.log('details :', this.details)
       })
     } else {
       this.details.next([])

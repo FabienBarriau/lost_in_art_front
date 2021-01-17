@@ -25,7 +25,7 @@ export class ImageDetailComponent implements OnInit {
   }
 
   goToRecommandation(art_id: string){
-    this.recommandationService.getRecommandation(art_id, 5, 'encoding')
+    this.recommandationService.getRecommandation(art_id)
     this.router.navigateByUrl('/recommandation')
   }
 

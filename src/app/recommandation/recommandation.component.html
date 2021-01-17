@@ -1,12 +1,8 @@
-<p-galleria [(value)]="imgs" [numVisible]="3" [(activeIndex)]="activeIndex">
-    <ng-template pTemplate="item" let-item>
-        <div class="img-container">
-          <img [src]="item.image" style="height: 400px;" />
-        </div>
-    </ng-template>
-    <ng-template pTemplate="thumbnail" let-item>
-        <div class="p-grid p-nogutter p-justify-center">
-            <img [src]="item.image" style="height: 100px;"/>
-        </div>
-    </ng-template>
-</p-galleria>
+<div class="ui-g ui-g-nopad">
+    <div class="ui-g-8 ui-g-nopad">
+      <app-recommandation-gallery></app-recommandation-gallery>
+    </div>
+    <div class="ui-g-4 ui-g-nopad">
+      <app-recommandation-management></app-recommandation-management>
+    </div>
+</div>

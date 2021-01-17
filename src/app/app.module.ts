@@ -15,6 +15,8 @@ import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { GalleriaModule } from 'primeng/galleria';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { FileUploadModule } from 'primeng/fileupload';
 
 import { ImgsService } from './services/imgs.service';
 import { RecommandationService } from './services/recommandation.service';
@@ -32,6 +34,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { RecommandationComponent } from './recommandation/recommandation.component';
 import { AboutComponent } from './about/about.component';
+import { RecommandationGalleryComponent } from './recommandation-gallery/recommandation-gallery.component';
+import { RecommandationManagementComponent } from './recommandation-management/recommandation-management.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -55,7 +59,9 @@ const appRoutes: Routes = [
     FavoritesComponent,
     RecommandationComponent,
     ProfileComponent,
-    AboutComponent
+    AboutComponent,
+    RecommandationGalleryComponent,
+    RecommandationManagementComponent
   ],
   imports: [
     BrowserModule,
@@ -64,6 +70,8 @@ const appRoutes: Routes = [
     MultiSelectModule,
     ButtonModule,
     InputTextModule,
+    InputNumberModule,
+    FileUploadModule,
     FormsModule,
     HttpClientModule,
     CardModule,
