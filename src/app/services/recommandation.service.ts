@@ -62,7 +62,27 @@ export class RecommandationService {
     paintingsDetailsResponse => {
       this.imgOfIinterest.next(paintingsDetailsResponse['data'])
     })
-    console.log(this.imgOfIinterest)
+  }
+
+  getRecommandationForUserImage(file: File){
+    // Update recommanded images
+    var paramsObjectRecommandedImgs = {};
+    paramsObjectRecommandedImgs["file"] = file;
+    paramsObjectRecommandedImgs["nbr"] = this.nbrRecommandation;
+    paramsObjectRecommandedImgs["metric"] = this.metric;
+    console.log(paramsObjectRecommandedImgs)
+    this._httpclient.post(
+      this._paintingRecommendation,
+      {params: new HttpParams({ fromObject: paramsObjectRecommandedImgs })}
+    ).subscribe(
+    paintingRecommendationResponse => {
+      this.imgs.next(paintingRecommendationResponse['data']);
+    })
+    // Update image of interest
+    var img = [];
+    img[0] = {"title": "Your image"}
+    console.log(img);
+    this.imgOfIinterest.next(img);
   }
 
   setNbrRecommandation(nbr: number){

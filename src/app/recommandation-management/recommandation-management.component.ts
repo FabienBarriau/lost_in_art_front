@@ -48,4 +48,10 @@ export class RecommandationManagementComponent implements OnInit {
     this.recommandationService.getRecommandation(this.imgOfIinterest[0].paintingId)
   }
 
+  myUploader(event): void {
+    console.log('salut')
+    console.log(event.files)
+    this.recommandationService.getRecommandationForUserImage(event.files[0])
+  }
+
 }

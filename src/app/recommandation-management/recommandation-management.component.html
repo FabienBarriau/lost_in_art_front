@@ -17,5 +17,5 @@
   </div>
 </p-card>
 <p-card header="Import your own image" [style]="{width: '100%'}"  styleClass="ui-card-shadow">
-  <p-fileUpload #fubauto mode="basic" name="myfile[]" url="./upload.php" accept="image/*" maxFileSize="1000000" chooseLabel="Browse"></p-fileUpload>
+  <p-fileUpload name="myfile[]" customUpload="true" (uploadHandler)="myUploader($event)" accept="image/*" maxFileSize="1000000" chooseLabel="Browse"></p-fileUpload>
 </p-card>
