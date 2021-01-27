@@ -23,6 +23,7 @@ export class RecommandationManagementComponent implements OnInit {
     metrics: nameCode[];
     selectedMetric: nameCode;
 
+
     constructor(private recommandationService: RecommandationService) {
       this.metrics = [
           {name: 'Content', code: 'encoding'},
@@ -49,8 +50,6 @@ export class RecommandationManagementComponent implements OnInit {
   }
 
   myUploader(event): void {
-    console.log('salut')
-    console.log(event.files)
     this.recommandationService.getRecommandationForUserImage(event.files[0])
   }
 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs'
 import { environment } from 'src/environments/environment';
 
@@ -66,22 +66,25 @@ export class RecommandationService {
 
   getRecommandationForUserImage(file: File){
     // Update recommanded images
-    var paramsObjectRecommandedImgs = {};
-    paramsObjectRecommandedImgs["file"] = file;
-    paramsObjectRecommandedImgs["nbr"] = this.nbrRecommandation;
-    paramsObjectRecommandedImgs["metric"] = this.metric;
-    console.log(paramsObjectRecommandedImgs)
+    const formData = new FormData();
+    formData.append('file', file, file.name);
+    formData.append('nbr', this.nbrRecommandation.toString());
+    formData.append('metric', this.metric);
+    const headerDict = {
+      'accept': 'application/json',
+    }
     this._httpclient.post(
       this._paintingRecommendation,
-      {params: new HttpParams({ fromObject: paramsObjectRecommandedImgs })}
+      formData,
+      {headers: new HttpHeaders(headerDict), reportProgress: true}
     ).subscribe(
     paintingRecommendationResponse => {
+      console.log(paintingRecommendationResponse)
       this.imgs.next(paintingRecommendationResponse['data']);
     })
     // Update image of interest
     var img = [];
     img[0] = {"title": "Your image"}
-    console.log(img);
     this.imgOfIinterest.next(img);
   }
 
