@@ -46,7 +46,11 @@ export class RecommandationManagementComponent implements OnInit {
   onClickSubmitNewRecommandation(): void {
     this.recommandationService.setNbrRecommandation(this.nbrRecommandation)
     this.recommandationService.setMetric(this.selectedMetric.code)
-    this.recommandationService.getRecommandation(this.imgOfIinterest[0].paintingId)
+    if(this.recommandationService.isUserImage){
+      this.recommandationService.getRecommandationForUserImage(this.recommandationService.UserImage)
+    } else{
+      this.recommandationService.getRecommandation(this.imgOfIinterest[0].paintingId)
+    }
   }
 
   myUploader(event): void {

@@ -38,8 +38,11 @@ export class RecommandationService {
   ]);
   public nbrRecommandation: number = 3;
   public metric: string = 'encoding';
+  public isUserImage: bool = false;
+  public UserImage: File;
 
   getRecommandation(art_id){
+    this.isUserImage = false
     // Update recommanded images
     var paramsObjectRecommandedImgs = {};
     paramsObjectRecommandedImgs["art_id"] = art_id;
@@ -65,9 +68,12 @@ export class RecommandationService {
   }
 
   getRecommandationForUserImage(file: File){
+    this.isUserImage = true
+    this.UserImage = file
+    console.log(this.UserImage)
     // Update recommanded images
     const formData = new FormData();
-    formData.append('file', file, file.name);
+    formData.append('file', this.UserImage, this.UserImage.name);
     formData.append('nbr', this.nbrRecommandation.toString());
     formData.append('metric', this.metric);
     const headerDict = {
@@ -79,7 +85,6 @@ export class RecommandationService {
       {headers: new HttpHeaders(headerDict), reportProgress: true}
     ).subscribe(
     paintingRecommendationResponse => {
-      console.log(paintingRecommendationResponse)
       this.imgs.next(paintingRecommendationResponse['data']);
     })
     // Update image of interest
