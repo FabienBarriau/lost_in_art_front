@@ -38,7 +38,7 @@ export class RecommandationService {
   ]);
   public nbrRecommandation: number = 3;
   public metric: string = 'encoding';
-  public isUserImage: bool = false;
+  public isUserImage: boolean = false;
   public UserImage: File;
 
   getRecommandation(art_id){
@@ -70,7 +70,6 @@ export class RecommandationService {
   getRecommandationForUserImage(file: File){
     this.isUserImage = true
     this.UserImage = file
-    console.log(this.UserImage)
     // Update recommanded images
     const formData = new FormData();
     formData.append('file', this.UserImage, this.UserImage.name);
