@@ -1,12 +1,12 @@
-<p-galleria [(value)]="imgs" [numVisible]="3" [(activeIndex)]="activeIndex">
+<p-galleria [(value)]="imgs" [numVisible]="3" [(activeIndex)]="activeIndex" style="width: 100%;">
     <ng-template pTemplate="item" let-item>
         <div class="img-container">
-          <img [src]="item.image" style="height: 400px;" />
+          <img [src]="item.image" style="width: 100%;" />
         </div>
     </ng-template>
     <ng-template pTemplate="thumbnail" let-item>
         <div class="p-grid p-nogutter p-justify-center">
-            <img [src]="item.image" style="height: 100px;"/>
+            <img [src]="item.image"/>
         </div>
     </ng-template>
 </p-galleria>
