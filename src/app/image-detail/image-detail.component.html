@@ -20,20 +20,24 @@
 
   <ng-template #elseBlock>
   <p-scrollPanel  [style]="{width: '100%', height: '500px'}">
-    <p-card *ngFor="let detail of details" header="{{ detail.title }}" subheader="{{ detail.artistName }}" [style]="{width: '100%'}"  styleClass="ui-card-shadow">
+    <p-card *ngFor="let detail of details" [style]="{width: '100%'}"  styleClass="ui-card-shadow">
         <p-header>
             <img src="Card" src="{{ detail.image }}" class="imgCard">
         </p-header>
+        <p-header>
+          <button pButton (click)="goToRecommandation(detail.paintingId)" type="button" icon="pi pi-search" class="p-button-raised p-button-rounded" style="float: right;"></button>
+          <h2>{{ detail.title }}</h2>
+          <h3>{{ detail.artistName }}</h3>
+          <div style="display: flex;">
+            <div class="container" *ngFor="let style of detail.styles">
+              <p class="style"> {{ style }} </p>
+            </div>
+            <div class="container" *ngFor="let gallery of detail.galleries">
+              <p class="gallery"> {{ gallery }} </p>
+            </div>
+          </div>
+        </p-header>
         <div class="description" [innerHtml]='detail.description | bbcodeToHtml '></div>
-        <div class="style-container" *ngFor="let style of detail.styles">
-          <p class="style"> {{ style }} </p>
-        </div>
-        <div class="gallery-container" *ngFor="let gallery of detail.galleries">
-          <p class="gallery"> {{ gallery }} </p>
-        </div>
-        <div>
-          <button pButton (click)="goToRecommandation(detail.paintingId)" type="button" icon="pi pi-search" class="p-button-raised p-button-rounded"></button>
-        </div>
     </p-card>
   </p-scrollPanel>
   </ng-template>

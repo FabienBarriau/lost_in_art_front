@@ -4,24 +4,18 @@
   padding: 3px;
 }
 
-.style-container {
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  flex-direction: row;
-}
-
 .gallery {
   background-color: #bde8ff !important;
   border-radius: 5px;
   padding: 3px;
 }
 
-.gallery-container {
+.container {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
   flex-direction: row;
+  margin: 5px
 }
 
 .helpmessage-container {
