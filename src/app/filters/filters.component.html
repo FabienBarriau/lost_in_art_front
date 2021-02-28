@@ -1,32 +1,38 @@
-<div class="ui-g test">
-    <div class="ui-g-2">
-      <h3 class="filterTitle">Media</h3>
-      <p-multiSelect [options]="media" [(ngModel)]="selectedMedia" optionLabel="name" maxSelectedLabels="1" [virtualScroll]="true" itemSize="30" [style]="{'width': '150px'}">
-      </p-multiSelect>
-    </div>
-    <div class="ui-g-2">
-      <h3 class="filterTitle">Style</h3>
-      <p-multiSelect [options]="style" [(ngModel)]="selectedStyle" optionLabel="name" maxSelectedLabels="1" [virtualScroll]="true" itemSize="30" [style]="{'width': '200px'}">
-      </p-multiSelect>
-    </div>
-    <div class="ui-g-2">
-      <h3 class="filterTitle">Artiste</h3>
-      <p-multiSelect [options]="author" [(ngModel)]="selectedAuthor" optionLabel="name" maxSelectedLabels="1" [virtualScroll]="true" itemSize="30" [style]="{'width': '200px'}">
-      </p-multiSelect>
-    </div>
-    <div class="ui-g-2">
-      <h3 class="filterTitle">Genre</h3>
-      <p-multiSelect [options]="genre" [(ngModel)]="selectedGenre" optionLabel="name" maxSelectedLabels="1" [virtualScroll]="true" itemSize="30" [style]="{'width': '200px'}">
-      </p-multiSelect>
-    </div>
-    <div class="ui-g-2">
-      <h3 class="metricTitle">Type of similarity</h3>
-      <p-dropdown [options]="metrics" [(ngModel)]="selectedMetric" optionLabel="name"></p-dropdown>
-    </div>
-    <div class="ui-g-1 align">
-      <button class="ui-button-rounded" pButton type="button" label="Random" (click)="onClickSubmitRandom()"></button>
-    </div>
-    <div class="ui-g-1 align">
-      <button class="ui-button-rounded" pButton type="button" label="Validate" (click)="onClickSubmitValidate()"></button>
-    </div>
+<p-sidebar [(visible)]="display">
+  <div>
+    <h3 class="filterTitle">Media</h3>
+    <p-multiSelect [options]="media" [(ngModel)]="selectedMedia" optionLabel="name" maxSelectedLabels="1" [virtualScroll]="true" itemSize="30" [style]="{'width': '150px'}">
+    </p-multiSelect>
+  </div>
+  <div>
+    <h3 class="filterTitle">Style</h3>
+    <p-multiSelect [options]="style" [(ngModel)]="selectedStyle" optionLabel="name" maxSelectedLabels="1" [virtualScroll]="true" itemSize="30" [style]="{'width': '200px'}">
+    </p-multiSelect>
+  </div>
+  <div>
+    <h3 class="filterTitle">Artiste</h3>
+    <p-multiSelect [options]="author" [(ngModel)]="selectedAuthor" optionLabel="name" maxSelectedLabels="1" [virtualScroll]="true" itemSize="30" [style]="{'width': '200px'}">
+    </p-multiSelect>
+  </div>
+  <div>
+    <h3 class="filterTitle">Genre</h3>
+    <p-multiSelect [options]="genre" [(ngModel)]="selectedGenre" optionLabel="name" maxSelectedLabels="1" [virtualScroll]="true" itemSize="30" [style]="{'width': '200px'}">
+    </p-multiSelect>
+  </div>
+  <div>
+    <h3 class="metricTitle">Type of similarity</h3>
+    <p-dropdown [options]="metrics" [(ngModel)]="selectedMetric" optionLabel="name"></p-dropdown>
+  </div>
+  <div>
+    <p-button class="button-filter" type="button" label="Validate" (click)="onClickSubmitValidate()"></p-button>
+  </div>
+</p-sidebar>
+
+<div class="p-grid p-nogutter test">
+  <div class="p-sm-6 p-md-2 p-lg-2 p-xl-2 align">
+    <p-button class="button-filter" type="text" (click)="display = true" icon="pi pi-plus" label="Custom filters"></p-button>
+  </div>
+  <div class="p-sm-6 p-md-2 p-lg-1 p-xl-1 align">
+    <p-button class="button-filter" type="button" label="Random" (click)="onClickSubmitRandom()"></p-button>
+  </div>
 </div>

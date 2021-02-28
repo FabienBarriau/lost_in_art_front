@@ -17,6 +17,7 @@ import { TabMenuModule } from 'primeng/tabmenu';
 import { GalleriaModule } from 'primeng/galleria';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { FileUploadModule } from 'primeng/fileupload';
+import { SidebarModule } from 'primeng/sidebar';
 
 import { ImgsService } from './services/imgs.service';
 import { RecommandationService } from './services/recommandation.service';
@@ -81,6 +82,7 @@ const appRoutes: Routes = [
     MessageModule,
     TabMenuModule,
     GalleriaModule,
+    SidebarModule,
     RouterModule.forRoot(appRoutes),
   ],
   providers: [

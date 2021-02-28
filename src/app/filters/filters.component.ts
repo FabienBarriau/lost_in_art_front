@@ -3,6 +3,7 @@ import { SelectItem } from 'primeng/api';
 import { HttpClient } from '@angular/common/http';
 import { ImgsService } from '../services/imgs.service';
 import { environment } from 'src/environments/environment';
+import {SidebarModule} from 'primeng/sidebar';
 
 interface nameCode {
     name: string,
@@ -28,6 +29,7 @@ export class FiltersComponent implements OnInit{
   selectedAuthor: nameCode[];
   selectedGenre: nameCode[];
   selectedMetric: nameCode;
+  display: Boolean=false;
 
   constructor(private _httpClient: HttpClient, private imgsService: ImgsService) {
   }
@@ -59,7 +61,7 @@ export class FiltersComponent implements OnInit{
     );
   }
 
-  onClickSubmitValidate() {
+  updateImgsGraph() {
     let genres = null;
     if(this.selectedGenre.length != 0) genres = this.selectedGenre.map(item => item.code);
     let styles = null;
@@ -70,6 +72,10 @@ export class FiltersComponent implements OnInit{
     if(this.selectedAuthor.length != 0) author = this.selectedAuthor.map(item => item.code);
     let metric = this.selectedMetric["code"]
     this.imgsService.updateImgs(genres, styles, media, author, metric);
+  }
+
+  onClickSubmitValidate() {
+    this.updateImgsGraph()
   }
 
   onClickSubmitRandom() {
@@ -87,9 +93,9 @@ export class FiltersComponent implements OnInit{
     for(let i=0;i<=getRandomInt(4);i++){
       selectedDropDownList[whichFilter].push(dropDownList[whichFilter][getRandomInt(dropDownList[whichFilter].length)])
     }
-
     this.selectedMetric = this.metrics[getRandomInt(2)]
 
+    this.updateImgsGraph()
   }
 
 }
