@@ -1,5 +1,5 @@
 <p-messages [(value)]="msgs"></p-messages>
 <div #rendererContainer>
   <div id="loader"></div>
-  <canvas id="canvas" (click)="onClickMe($event)"></canvas>
+  <canvas id="canvas" (click)="onClickMe($event)" (touchstart)="onTouchMe($event)"></canvas>
 </div>

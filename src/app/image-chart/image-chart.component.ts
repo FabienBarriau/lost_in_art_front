@@ -163,6 +163,36 @@ export class ImageChartComponent{
       }
       this.imgsService.updateSelectPaintings(this.selectedPaintings)
     }
+  }
+
+  onTouchMe(event: any){
+    console.log('test')
+    console.log(event)
+    //Convert mouse position into position in the renderer
+    var bcr = event.target.getBoundingClientRect();
+    var x = event.targetTouches[0].clientX - bcr.x;
+    var y = event.targetTouches[0].clientY - bcr.y;
+    this.mouse.x = (x / this.renderer.domElement.width) * 2 - 1
+    this.mouse.y = -(y / this.renderer.domElement.height) * 2 + 1;
+
+    // Launch a raycaste from the click to detect objects
+    this.raycaster.setFromCamera( this.mouse, this.camera );
+    var intersections = this.raycaster.intersectObjects( this.scene.children, true );
+
+    // If detect one or more object take the first one (first encounter by the raycast)
+    if(intersections.length >= 1){
+      let object = intersections[0].object
+      // If click in a unselected object select this object
+      // If click in a selected object unselect this object
+      if(this.selectedPaintings.has(object["paintingsId"])){
+        object['material'].color.set(0xffffff);
+        this.selectedPaintings.delete(object["paintingsId"])
+      } else{
+        object['material'].color.set(0x1e90ff);
+        this.selectedPaintings.add(object["paintingsId"])
+      }
+      this.imgsService.updateSelectPaintings(this.selectedPaintings)
+    }
     console.log('selectedPaintings :', this.selectedPaintings)
   }
 
@@ -195,6 +225,10 @@ export class ImageChartComponent{
       RIGHT: THREE.MOUSE.ROTATE,
       MIDDLE: THREE.MOUSE.DOLLY,
       LEFT: THREE.MOUSE.PAN
+    }
+    this.controls.touches = {
+      ONE: THREE.TOUCH.PAN,
+      TWO: THREE.TOUCH.DOLLY_PAN
     }
     this.controls.zoomSpeed = 3;
     this.controls.minDistance = 100;
