@@ -3,6 +3,9 @@
     <img src="{{ imgOfIinterest[0].image }}" width="100%">
   </div>
 </p-card>
+<p-card header="Import your own image" [style]="{width: '100%'}"  styleClass="ui-card-shadow">
+  <p-fileUpload name="myfile[]" customUpload="true" (uploadHandler)="myUploader($event)" accept="image/*" maxFileSize="1000000" chooseLabel="Browse"></p-fileUpload>
+</p-card>
 <p-card header="Manage recommandation" [style]="{width: '100%'}"  styleClass="ui-card-shadow">
   <div class="p-grid p-nogutter">
     <div class="p-sm-12 p-md-12 p-lg-6 p-xl-6">
@@ -17,7 +20,4 @@
       <button class="ui-button-rounded" pButton type="button" label="Update settings" (click)="onClickSubmitNewRecommandation()"></button>
     </div>
   </div>
-</p-card>
-<p-card header="Import your own image" [style]="{width: '100%'}"  styleClass="ui-card-shadow">
-  <p-fileUpload name="myfile[]" customUpload="true" (uploadHandler)="myUploader($event)" accept="image/*" maxFileSize="1000000" chooseLabel="Browse"></p-fileUpload>
 </p-card>

@@ -166,8 +166,6 @@ export class ImageChartComponent{
   }
 
   onTouchMe(event: any){
-    console.log('test')
-    console.log(event)
     //Convert mouse position into position in the renderer
     var bcr = event.target.getBoundingClientRect();
     var x = event.targetTouches[0].clientX - bcr.x;
