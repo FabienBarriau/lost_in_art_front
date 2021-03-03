@@ -6,7 +6,8 @@ import { environment } from 'src/environments/environment';
 @Injectable()
 export class ImgsService {
 
-  private _paintingsPosition = environment.apiUrl.concat('paintingsPosition');
+  private _paintingsPositionRandomSample = environment.apiUrl.concat('paintingsPosition/randomSample');
+  private _paintingsPositionAppliedFilters = environment.apiUrl.concat('paintingsPosition/appliedFilters');
   private _paintingsDetails = environment.apiUrl.concat('paintingsDetail');
 
   constructor(private _httpclient: HttpClient) {
@@ -17,7 +18,7 @@ export class ImgsService {
   public boundingBox = new Object();
   public initialDensity: number;
 
-  updateImgs(genres, styles, media, author, metric){
+  updateImgsWithAppliedFilters(genres, styles, media, author, metric){
     var paramsObject = {}
     paramsObject["metric"] = metric
     if(genres !== null) paramsObject["genres"] = genres
@@ -25,7 +26,28 @@ export class ImgsService {
     if(media !== null) paramsObject["media"] = media
     if(author !== null) paramsObject["artistName"] = author
     let params = new HttpParams({ fromObject: paramsObject });
-    this._httpclient.get(this._paintingsPosition, {params: params}).subscribe(
+    this._httpclient.get(this._paintingsPositionAppliedFilters, {params: params}).subscribe(
+    paintingsPositionResponse => {
+      const boundingBox = paintingsPositionResponse['bounding_box']
+      const imgs = paintingsPositionResponse['data']
+      const l = (boundingBox['x_max'] - boundingBox['x_min'])
+      const h = (boundingBox['y_max'] - boundingBox['y_min'])
+      if(imgs.length > 1){
+        this.initialDensity = imgs.length/(l*h)
+      } else {
+        this.initialDensity = 0.002
+      }
+      this.imgs.next(imgs);
+      this.details.next([]);
+    })
+  }
+
+  updateImgsWithRandomSample(metric, nbr){
+    var paramsObject = {}
+    paramsObject["metric"] = metric
+    paramsObject["nbr"] = nbr
+    let params = new HttpParams({ fromObject: paramsObject });
+    this._httpclient.get(this._paintingsPositionRandomSample, {params: params}).subscribe(
     paintingsPositionResponse => {
       const boundingBox = paintingsPositionResponse['bounding_box']
       const imgs = paintingsPositionResponse['data']

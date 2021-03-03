@@ -30,6 +30,8 @@ export class FiltersComponent implements OnInit{
   selectedGenre: nameCode[];
   selectedMetric: nameCode;
   display: Boolean=false;
+  isAppliedFilters: Boolean=false;
+  nbrMaxImages: Number=20;
 
   constructor(private _httpClient: HttpClient, private imgsService: ImgsService) {
   }
@@ -61,7 +63,7 @@ export class FiltersComponent implements OnInit{
     );
   }
 
-  updateImgsGraph() {
+  getImagesWithAppliedFilters() {
     let genres = null;
     if(this.selectedGenre.length != 0) genres = this.selectedGenre.map(item => item.code);
     let styles = null;
@@ -71,31 +73,22 @@ export class FiltersComponent implements OnInit{
     let author = null;
     if(this.selectedAuthor.length != 0) author = this.selectedAuthor.map(item => item.code);
     let metric = this.selectedMetric["code"]
-    this.imgsService.updateImgs(genres, styles, media, author, metric);
+    this.imgsService.updateImgsWithAppliedFilters(genres, styles, media, author, metric);
   }
 
-  onClickSubmitValidate() {
-    this.updateImgsGraph()
+  getImagesWithRandomSample(){
+    this.imgsService.updateImgsWithRandomSample(
+      this.selectedMetric["code"],
+      this.nbrMaxImages
+    );
   }
 
-  onClickSubmitRandom() {
-    this.selectedMedia = [];
-    this.selectedStyle = [];
-    this.selectedGenre = [];
-    this.selectedAuthor = [];
-
-    function getRandomInt(max) {
-      return Math.floor(Math.random() * Math.floor(max));
+  onClickGetImages(){
+    if(this.isAppliedFilters){
+      this.getImagesWithAppliedFilters()
+    } else{
+      this.getImagesWithRandomSample()
     }
-    let dropDownList = [this.media, this.genre, this.style, this.author]
-    let selectedDropDownList = [this.selectedMedia, this.selectedGenre, this.selectedStyle, this.selectedAuthor]
-    let whichFilter = getRandomInt(4)
-    for(let i=0;i<=getRandomInt(4);i++){
-      selectedDropDownList[whichFilter].push(dropDownList[whichFilter][getRandomInt(dropDownList[whichFilter].length)])
-    }
-    this.selectedMetric = this.metrics[getRandomInt(2)]
-
-    this.updateImgsGraph()
   }
 
 }
