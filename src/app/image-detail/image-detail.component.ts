@@ -29,4 +29,8 @@ export class ImageDetailComponent implements OnInit {
     this.router.navigateByUrl('/recommandation')
   }
 
+  onClickApplyFiltersWithStyle(style: string){
+    console.log(style)
+  }
+
 }

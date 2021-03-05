@@ -30,7 +30,7 @@
           <h3>{{ detail.artistName }}</h3>
           <div style="display: flex;">
             <div class="container" *ngFor="let style of detail.styles">
-              <p class="style"> {{ style }} </p>
+              <p-button label="{{style}}" class="button-filter" type="text"  (click)="onClickApplyFiltersWithStyle(style)"></p-button>
             </div>
             <div class="container" *ngFor="let gallery of detail.galleries">
               <p class="gallery"> {{ gallery }} </p>
