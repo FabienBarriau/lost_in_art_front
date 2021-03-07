@@ -21,7 +21,6 @@ export class ImageChartComponent{
   mouse = new THREE.Vector2();
   raycaster = new THREE.Raycaster();
   msgs = [];
-
   imgs = [];
   selectedPaintings = new Set();
 

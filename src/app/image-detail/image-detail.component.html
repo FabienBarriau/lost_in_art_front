@@ -27,7 +27,7 @@
         <p-header>
           <button pButton (click)="goToRecommandation(detail.paintingId)" type="button" icon="pi pi-search" class="p-button-raised p-button-rounded" style="float: right;"></button>
           <h2>{{ detail.title }}</h2>
-          <h3>{{ detail.artistName }}</h3>
+          <p-button label="{{detail.artistName}}" class="button-filter" type="text"  (click)="onClickApplyFiltersWithAuthor(detail.artistName)"></p-button>
           <div style="display: flex;">
             <div class="container" *ngFor="let style of detail.styles">
               <p-button label="{{style}}" class="button-filter" type="text"  (click)="onClickApplyFiltersWithStyle(style)"></p-button>

@@ -9,10 +9,7 @@ export class ImgsService {
   private _paintingsPositionRandomSample = environment.apiUrl.concat('paintingsPosition/randomSample');
   private _paintingsPositionAppliedFilters = environment.apiUrl.concat('paintingsPosition/appliedFilters');
   private _paintingsDetails = environment.apiUrl.concat('paintingsDetail');
-
-  constructor(private _httpclient: HttpClient) {
-  }
-
+  constructor(private _httpclient: HttpClient) {}
   public imgs = new BehaviorSubject([]);
   public details = new BehaviorSubject([]);
   public boundingBox = new Object();

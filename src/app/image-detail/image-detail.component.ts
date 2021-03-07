@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ImgsService } from '../services/imgs.service';
 import { RecommandationService } from '../services/recommandation.service';
+import { FiltersService } from '../services/filters.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,9 +16,10 @@ export class ImageDetailComponent implements OnInit {
   constructor(
     private imgsService: ImgsService,
     private recommandationService: RecommandationService,
+    private filtersService: FiltersService,
     private router: Router) {
-    this.imgsService.details.subscribe(valeur => {
-      this.details = valeur;
+    this.imgsService.details.subscribe(value => {
+      this.details = value;
     });
   }
 
@@ -30,7 +32,23 @@ export class ImageDetailComponent implements OnInit {
   }
 
   onClickApplyFiltersWithStyle(style: string){
-    console.log(style)
+    this.filtersService.set_selectedStyle(style)
+    this.imgsService.updateImgsWithAppliedFilters(
+      null,
+      [style],
+      null,
+      null,
+      'encoding');
   }
+
+  onClickApplyFiltersWithAuthor(author: string){
+    this.filtersService.set_selectedAuthor(author)
+    this.imgsService.updateImgsWithAppliedFilters(
+      null,
+      null,
+      null,
+      [author],
+      'encoding');
+    }
 
 }

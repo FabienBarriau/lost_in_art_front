@@ -22,6 +22,7 @@ import { InputSwitchModule } from 'primeng/inputswitch';
 
 import { ImgsService } from './services/imgs.service';
 import { RecommandationService } from './services/recommandation.service';
+import { FiltersService } from './services/filters.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -89,7 +90,8 @@ const appRoutes: Routes = [
   ],
   providers: [
     ImgsService,
-    RecommandationService
+    RecommandationService,
+    FiltersService
   ],
   bootstrap: [AppComponent]
 })

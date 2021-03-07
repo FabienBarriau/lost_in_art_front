@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { SelectItem } from 'primeng/api';
 import { HttpClient } from '@angular/common/http';
 import { ImgsService } from '../services/imgs.service';
+import { FiltersService } from '../services/filters.service';
 import { environment } from 'src/environments/environment';
-import {SidebarModule} from 'primeng/sidebar';
+import { SidebarModule } from 'primeng/sidebar';
 
 interface nameCode {
     name: string,
@@ -24,17 +25,20 @@ export class FiltersComponent implements OnInit{
   author: nameCode[];
   genre: nameCode[];
   metrics: nameCode[];
+  display: Boolean=false;
+  isAppliedFilters: Boolean=false;
+  nbrMaxImages: Number=20;
   selectedMedia: nameCode[];
   selectedStyle: nameCode[];
   selectedAuthor: nameCode[];
   selectedGenre: nameCode[];
-  selectedMetric: nameCode;
-  display: Boolean=false;
-  isAppliedFilters: Boolean=false;
-  nbrMaxImages: Number=20;
+  selectedMetric: nameCode={name: 'Content', code: 'encoding'}
 
-  constructor(private _httpClient: HttpClient, private imgsService: ImgsService) {
-  }
+  constructor(
+    private _httpClient: HttpClient,
+    private imgsService: ImgsService,
+    private filtersService: FiltersService
+  ) {}
 
   ngOnInit() {
     this.media = [];
@@ -45,11 +49,21 @@ export class FiltersComponent implements OnInit{
         {name: 'Content', code: 'encoding'},
         {name: 'Color', code: 'color-encoding'},
     ];
-    this.selectedMedia = [];
-    this.selectedStyle = [];
-    this.selectedGenre = [];
-    this.selectedAuthor = [];
-    this.selectedMetric = {name: 'Content', code: 'encoding'}
+    this.filtersService.selectedStyle.subscribe(value => {
+      this.isAppliedFilters = true;
+      this.selectedMedia = [];
+      this.selectedStyle = value;
+      this.selectedAuthor = [];
+      this.selectedGenre = [];
+    });
+    this.filtersService.selectedAuthor.subscribe(value => {
+      this.isAppliedFilters = true;
+      this.selectedMedia = [];
+      this.selectedStyle = [];
+      this.selectedAuthor = value;
+      this.selectedGenre = [];
+    });
+    this.isAppliedFilters = false;
   }
 
   ngAfterViewInit() {
@@ -83,7 +97,7 @@ export class FiltersComponent implements OnInit{
     );
   }
 
-  onClickGetImages(){
+  onClickGetImages(event: any){
     if(this.isAppliedFilters){
       this.getImagesWithAppliedFilters()
     } else{
