@@ -19,3 +19,26 @@
 .button-filter {
   margin: 10px;
 }
+
+.button-get-images {
+  transition: box-shadow .3s;
+  border-style: none;
+  background: linear-gradient(rgb(248 248 248 / 0%), rgb(0 0 0 / 57%)), url(https://i.pinimg.com/originals/f7/50/08/f75008b6eda54015ac6c7d496f814017.jpg);
+  height: 50px;
+  width: 100%;
+  color: white;
+  font-size: 1.5em;
+}
+
+.button-get-images:hover {
+  box-shadow: 0 0 6px 3px black;
+}
+
+.button-customize-search {
+  border-style: solid;
+  background-color: #898989;
+  border-radius: 5px;
+  height: 30px;
+  border-color: #272727;
+  color: #2c2c2c;
+}

@@ -34,10 +34,15 @@
 </p-sidebar>
 
 <div class="p-grid p-nogutter test">
-  <div class="p-sm-6 p-md-2 p-lg-2 p-xl-2 align">
-    <p-button label="Customize Search" class="button-filter" type="text" (click)="display = true"></p-button>
+  <div class="p-sm-6 p-md-6 p-lg-3 p-xl-3 align">
+    <button class="button-get-images" type="button"  (click)="onClickGetImages($event)">
+      Get images !
+    </button>
   </div>
-  <div class="p-sm-6 p-md-2 p-lg-1 p-xl-1 align">
-    <p-button label="Get images !" class="button-filter" type="text"  (click)="onClickGetImages($event)"></p-button>
+  <div class="p-sm-6 p-md-6 p-lg-3 p-xl-3 align">
+    <button class="button-customize-search" type="button"  (click)="display = true">
+      Customize Search
+      <i class="pi pi-pencil"></i>
+    </button>
   </div>
 </div>
