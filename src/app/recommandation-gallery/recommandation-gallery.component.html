@@ -7,7 +7,7 @@
 </p-galleria>
 <p-card [style]="{width: '100%'}">
   <p-header>
-    <button pButton (click)="updateRecommandation()" type="button" icon="pi pi-search" class="p-button-raised p-button-rounded" style="float: right;"></button>
+    <button pButton (click)="updateRecommandation()" type="button" label="Like this !" icon="pi pi-search" class="p-button-raised p-button-rounded" style="float: right;"></button>
     <h2>{{ imgs[_activeIndex].title }}</h2>
     <div class="container-tags">
       <button class="button-tags button-author" type="button"  (click)="onClickApplyFiltersWithAuthor(imgs[_activeIndex].artistName)">

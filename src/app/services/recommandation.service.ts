@@ -36,7 +36,7 @@ export class RecommandationService {
       "image": "https://uploads1.wikiart.org/images/ernst-fuchs/crucification-1950.jpg!Large.jpg",
     },
   ]);
-  public nbrRecommandation: number = 3;
+  public nbrRecommandation: number = 5;
   public metric: string = 'encoding';
   public isUserImage: boolean = false;
   public UserImage: File;

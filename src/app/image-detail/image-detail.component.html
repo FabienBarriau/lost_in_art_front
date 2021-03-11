@@ -25,7 +25,7 @@
             <img src="Card" src="{{ detail.image }}" class="imgCard">
         </p-header>
         <p-header>
-          <button pButton (click)="goToRecommandation(detail.paintingId)" type="button" icon="pi pi-search" class="p-button-raised p-button-rounded" style="float: right;"></button>
+          <button pButton (click)="goToRecommandation(detail.paintingId)" type="button"  label="Like this !" icon="pi pi-search" class="p-button-raised p-button-rounded" style="float: right;"></button>
           <h2>{{ detail.title }}</h2>
           <div class="container-tags">
             <button class="button-tags button-author" type="button"  (click)="onClickApplyFiltersWithAuthor(detail.artistName)">
