@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ImgsService } from '../services/imgs.service';
 import { RecommandationService } from '../services/recommandation.service';
-
+import { FiltersService } from '../services/filters.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recommandation-gallery',
@@ -30,7 +32,12 @@ export class RecommandationGalleryComponent implements OnInit {
       }
   ];
 
-  constructor(private recommandationService: RecommandationService) {
+  constructor(
+    private imgsService: ImgsService,
+    private recommandationService: RecommandationService,
+    private filtersService: FiltersService,
+    private router: Router
+  ) {
     this.recommandationService.imgs.subscribe(valeur => {
       this.imgs = valeur;
       this._activeIndex = 0
@@ -62,5 +69,27 @@ export class RecommandationGalleryComponent implements OnInit {
     updateRecommandation(){
       this.recommandationService.getRecommandation(this.imgs[this._activeIndex].paintingId)
     }
+
+    onClickApplyFiltersWithStyle(style: string){
+      this.filtersService.set_selectedStyle(style)
+      this.imgsService.updateImgsWithAppliedFilters(
+        null,
+        [style],
+        null,
+        null,
+        'encoding');
+        this.router.navigateByUrl('/home')
+    }
+
+    onClickApplyFiltersWithAuthor(author: string){
+      this.filtersService.set_selectedAuthor(author)
+      this.imgsService.updateImgsWithAppliedFilters(
+        null,
+        null,
+        null,
+        [author],
+        'encoding');
+        this.router.navigateByUrl('/home')
+      }
 
 }

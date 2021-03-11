@@ -9,6 +9,20 @@
   <p-header>
     <button pButton (click)="updateRecommandation()" type="button" icon="pi pi-search" class="p-button-raised p-button-rounded" style="float: right;"></button>
     <h2>{{ imgs[_activeIndex].title }}</h2>
-    <h3>{{ imgs[_activeIndex].artistName }}</h3>
+    <div class="container-tags">
+      <button class="button-tags button-author" type="button"  (click)="onClickApplyFiltersWithAuthor(imgs[_activeIndex].artistName)">
+        {{imgs[_activeIndex].artistName}}
+      </button>
+    </div>
+    <div class="container-tags">
+      <button class="button-tags button-style" type="button"  (click)="onClickApplyFiltersWithStyle(style)" *ngFor="let style of imgs[_activeIndex].styles">
+        {{style}}
+      </button>
+    </div>
+    <!-- <div class="container-tags">
+      <button class="button-tags button-gallery" type="button" *ngFor="let gallery of imgs[_activeIndex].galleries">
+        {{gallery}}
+      </button>
+    </div> -->
   </p-header>
 </p-card>
