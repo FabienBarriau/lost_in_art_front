@@ -11,11 +11,11 @@
     <h3 class="filterTitle">Apply filters ?</h3>
     <p-inputSwitch [(ngModel)]="isAppliedFilters"></p-inputSwitch>
   </div>
-  <div>
+  <!-- <div>
     <h3 class="filterTitle">Media</h3>
     <p-multiSelect [options]="media" [(ngModel)]="selectedMedia" optionLabel="name" maxSelectedLabels="1" [virtualScroll]="true" itemSize="30" [style]="{'width': '150px'}" [disabled]="!isAppliedFilters">
     </p-multiSelect>
-  </div>
+  </div> -->
   <div>
     <h3 class="filterTitle">Style</h3>
     <p-multiSelect [options]="style" [(ngModel)]="selectedStyle" optionLabel="name" maxSelectedLabels="1" [virtualScroll]="true" itemSize="30" [style]="{'width': '200px'}" [disabled]="!isAppliedFilters">
@@ -26,11 +26,11 @@
     <p-multiSelect [options]="author" [(ngModel)]="selectedAuthor" optionLabel="name" maxSelectedLabels="1" [virtualScroll]="true" itemSize="30" [style]="{'width': '200px'}" [disabled]="!isAppliedFilters">
     </p-multiSelect>
   </div>
-  <div>
+  <!-- <div>
     <h3 class="filterTitle">Genre</h3>
     <p-multiSelect [options]="genre" [(ngModel)]="selectedGenre" optionLabel="name" maxSelectedLabels="1" [virtualScroll]="true" itemSize="30" [style]="{'width': '200px'}" [disabled]="!isAppliedFilters">
     </p-multiSelect>
-  </div>
+  </div> -->
 </p-sidebar>
 
 <div class="p-grid p-nogutter test">
