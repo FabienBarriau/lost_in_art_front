@@ -35,7 +35,7 @@
 
 <div class="p-grid p-nogutter test">
   <div class="p-sm-6 p-md-6 p-lg-3 p-xl-3 align">
-    <button class="button-get-images" type="button"  (click)="onClickGetImages($event)">
+    <button class="button-get-images" type="button"  (click)="onClickGetImages($event)" [disabled]="IsgetImageDisabled">
       Get images !
     </button>
   </div>

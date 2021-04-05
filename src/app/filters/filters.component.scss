@@ -30,6 +30,15 @@
   font-size: 1.5em;
 }
 
+.button-get-images:disabled {
+  transition: box-shadow .3s;
+  border-style: none;
+  background: red;
+  width: 100%;
+  color: red;
+  font-size: 1.5em;
+}
+
 .button-get-images:hover {
   box-shadow: 0 0 6px 3px black;
 }

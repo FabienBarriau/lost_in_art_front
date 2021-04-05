@@ -2,6 +2,7 @@ import {Component, ViewChild, ElementRef} from '@angular/core';
 import { ImgsService } from '../services/imgs.service';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { FiltersService } from '../services/filters.service';
 
 @Component({
   selector: 'app-image-chart',
@@ -24,7 +25,7 @@ export class ImageChartComponent{
   imgs = [];
   selectedPaintings = new Set();
 
-  constructor(private imgsService: ImgsService) {
+  constructor(private imgsService: ImgsService, private filtersService: FiltersService) {
       this.counterLoading = 0;
   }
 
@@ -129,6 +130,7 @@ export class ImageChartComponent{
       }
       this.renderer.render(this.scene, this.camera)
       this.counterLoading = this.counterLoading + 1
+      this.filtersService.set_IsgetImageDisabled(false)
     }).catch(req => {console.log("Scene : ", req)});
   }
 

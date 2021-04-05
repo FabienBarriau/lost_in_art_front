@@ -27,6 +27,7 @@ export class FiltersComponent implements OnInit{
   metrics: nameCode[];
   display: Boolean=false;
   isAppliedFilters: Boolean=false;
+  IsgetImageDisabled: Boolean;
   nbrMaxImages: Number=20;
   selectedMedia: nameCode[];
   selectedStyle: nameCode[];
@@ -63,6 +64,10 @@ export class FiltersComponent implements OnInit{
       this.selectedAuthor = value;
       this.selectedGenre = [];
     });
+    this.filtersService.IsgetImageDisabled.subscribe(value => {
+      this.IsgetImageDisabled = value
+      console.log(this.IsgetImageDisabled)
+    })
     this.isAppliedFilters = false;
   }
 
@@ -103,6 +108,7 @@ export class FiltersComponent implements OnInit{
     } else{
       this.getImagesWithRandomSample()
     }
+    this.filtersService.set_IsgetImageDisabled(true)
   }
 
 }
