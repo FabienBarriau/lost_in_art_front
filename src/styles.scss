@@ -4,3 +4,36 @@ html {
   color: $color-dark;
   background-color: $color-background
 }
+
+.container-tags {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-bottom: 7px;
+}
+
+.button-tags{
+  height: 25px;
+  border-radius: 5px;
+  border-style: none;
+  padding: 2px 5px;
+  margin-left: 10px;
+  color: $color-light;
+}
+
+.button-author{
+  background-color: $color-element-primary-analogue-1;
+}
+
+.button-style{
+  background-color: $color-element-primary-analogue-2;
+}
+
+.button-similar-picture{
+  background-color: $color-element-primary;
+  border-style: none;
+  color: $color-light;
+  padding: 5px;
+  width: 100%;
+}

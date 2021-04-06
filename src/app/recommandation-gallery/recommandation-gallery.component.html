@@ -7,8 +7,17 @@
 </p-galleria>
 <p-card [style]="{width: '100%'}">
   <p-header>
-    <button pButton (click)="updateRecommandation()" type="button" label="Like this !" icon="pi pi-search" class="p-button-raised p-button-rounded" style="float: right;"></button>
-    <h2>{{ imgs[_activeIndex].title }}</h2>
+    <div class="p-grid p-nogutter test">
+      <div class="p-sm-8 p-md-8 p-lg-8 p-xl-8 align">
+        <h2>{{ imgs[_activeIndex].title }}</h2>
+      </div>
+      <div class="p-sm-4 p-md-4 p-lg-4 p-xl-4 align">
+        <button class="button-similar-picture" type="button"  (click)="updateRecommandation()">
+          Get similar picture
+          <i class="pi pi-pencil"></i>
+        </button>
+      </div>
+    </div>
     <div class="container-tags">
       <button class="button-tags button-author" type="button"  (click)="onClickApplyFiltersWithAuthor(imgs[_activeIndex].artistName)">
         {{imgs[_activeIndex].artistName}}
@@ -20,7 +29,7 @@
       </button>
     </div>
     <!-- <div class="container-tags">
-      <button class="button-tags button-gallery" type="button" *ngFor="let gallery of imgs[_activeIndex].galleries">
+      <button class="button-tags" type="button" *ngFor="let gallery of imgs[_activeIndex].galleries">
         {{gallery}}
       </button>
     </div> -->
