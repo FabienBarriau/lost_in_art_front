@@ -1,23 +1,48 @@
-<p-card header="{{ imgOfIinterest[0].title }}" subheader="{{ imgOfIinterest[0].artistName }}" [style]="{width: '100%'}"  styleClass="ui-card-shadow">
-  <div class="">
+<p-card [style]="{width: '100%'}"  styleClass="ui-card-shadow">
+  <p-header>
     <img src="{{ imgOfIinterest[0].image }}" width="100%">
-  </div>
+  </p-header>
+  <p-header>
+    <div class="p-sm-8 p-md-8 p-lg-8 p-xl-8 align">
+      <h2>{{ imgOfIinterest[0].title }}</h2>
+    </div>
+    <div class="container-tags">
+      <p>By</p>
+      <button class="button-tags button-author" type="button"  (click)="onClickApplyFiltersWithAuthor(imgOfIinterest[0].artistName)">
+        {{ imgOfIinterest[0].artistName }}
+      </button>
+    </div>
+  </p-header>
 </p-card>
-<p-card header="Import your own image" [style]="{width: '100%'}"  styleClass="ui-card-shadow">
-  <p-fileUpload name="myfile[]" customUpload="true" (uploadHandler)="myUploader($event)" accept="image/*" maxFileSize="1000000" chooseLabel="Browse"></p-fileUpload>
-</p-card>
-<p-card header="Manage recommandation" [style]="{width: '100%'}"  styleClass="ui-card-shadow">
-  <div class="p-grid p-nogutter">
-    <div class="p-sm-12 p-md-12 p-lg-6 p-xl-6">
+<div class="button-customize-recommandation-container">
+  <button class="button-customize button-customize-recommandation" type="button"  (click)="displayRecommandationSettings = true">
+    Customize recommandation
+  </button>
+</div>
+<div class="button-customize-recommandation-container">
+  <button class="button-customize button-customize-recommandation" type="button"  (click)="displayImportUserImageSettings = true">
+    Recommandation for your own image
+  </button>
+</div>
+<div class="button-customize-recommandation-container">
+  <button class="button-customize button-customize-recommandation" type="button"  (click)="displayImportUserImageSettings = true">
+    Back to big picture
+  </button>
+</div>
+<p-sidebar [(visible)]="displayRecommandationSettings">
+    <h2>Recommandation</h2>
+    <div>
       <h3 class="metricTitle">Type of similarity</h3>
       <p-dropdown autoWidth="false" [options]="metrics" [(ngModel)]="selectedMetric" optionLabel="name"></p-dropdown>
     </div>
-    <div class="p-sm-12 p-md-6 p-lg-6 p-xl-6">
+    <div>
       <h3 class="metricTitle">Number</h3>
       <p-inputNumber [(ngModel)]="nbrRecommandation"></p-inputNumber>
     </div>
-    <div class="p-sm-12 p-md-12 p-lg-6 p-xl-6">
-      <button class="ui-button-rounded" pButton type="button" label="Update settings" (click)="onClickSubmitNewRecommandation()"></button>
-    </div>
-  </div>
-</p-card>
+    <button class="button-customize button-customize-recommandation" type="button" (click)="onClickSubmitNewRecommandation()">
+      Update settings
+    </button>
+<p-sidebar>
+<!-- <p-dialog header="Recommandation for your image" [(visible)]="displayRecommandationSettings">
+  <p-fileUpload name="myfile[]" customUpload="true" (uploadHandler)="myUploader($event)" accept="image/*" maxFileSize="1000000" chooseLabel="Browse"></p-fileUpload>
+</p-dialog> -->

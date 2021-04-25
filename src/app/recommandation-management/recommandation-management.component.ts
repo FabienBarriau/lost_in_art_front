@@ -5,6 +5,10 @@ import { DropdownModule } from 'primeng/dropdown';
 import { SelectItem } from 'primeng/api';
 import { FileUploadModule } from 'primeng/fileupload';
 import { HttpClientModule } from '@angular/common/http';
+import { FiltersService } from '../services/filters.service';
+import { Router } from '@angular/router';
+import { ImgsService } from '../services/imgs.service';
+
 
 interface nameCode {
     name: string,
@@ -22,9 +26,16 @@ export class RecommandationManagementComponent implements OnInit {
     nbrRecommandation: number;
     metrics: nameCode[];
     selectedMetric: nameCode;
+    displayRecommandationSettings: boolean=false;
+    displayImportUserImageSettings: boolean=false;
 
 
-    constructor(private recommandationService: RecommandationService) {
+    constructor(
+      private imgsService: ImgsService,
+      private recommandationService: RecommandationService,
+      private filtersService: FiltersService,
+      private router: Router
+    ) {
       this.metrics = [
           {name: 'Content', code: 'encoding'},
           {name: 'Color', code: 'color-encoding'},
@@ -56,5 +67,27 @@ export class RecommandationManagementComponent implements OnInit {
   myUploader(event): void {
     this.recommandationService.getRecommandationForUserImage(event.files[0])
   }
+
+  onClickApplyFiltersWithStyle(style: string){
+    this.filtersService.set_selectedStyle(style)
+    this.imgsService.updateImgsWithAppliedFilters(
+      null,
+      [style],
+      null,
+      null,
+      'encoding');
+      this.router.navigateByUrl('/home')
+  }
+
+  onClickApplyFiltersWithAuthor(author: string){
+    this.filtersService.set_selectedAuthor(author)
+    this.imgsService.updateImgsWithAppliedFilters(
+      null,
+      null,
+      null,
+      [author],
+      'encoding');
+      this.router.navigateByUrl('/home')
+    }
 
 }

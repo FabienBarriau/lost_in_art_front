@@ -38,17 +38,6 @@
 }
 
 .button-customize-search {
-  transition: box-shadow .3s;
-  border-style: none;
-  border-radius: 5px;
-  background-color: $color-element-secondary;
   height: 40px;
-  border-color: $color-element-secondary;
-  color: $color-light;
-  font-size: 1.1em;
   width: 75%;
-}
-
-.button-customize-search:hover {
-  box-shadow: 0 0 2px 2px $color-element-secondary;
 }
