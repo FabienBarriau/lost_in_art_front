@@ -31,17 +31,18 @@
             </div>
             <div class="p-sm-4 p-md-4 p-lg-4 p-xl-4 align">
               <button class="button-similar-picture" type="button"  (click)="goToRecommandation(detail.paintingId)">
-                Get similar picture
-                <i class="pi pi-pencil"></i>
+                <b>Get similar images !</b>
               </button>
             </div>
           </div>
           <div class="container-tags">
+            <p>By</p>
             <button class="button-tags button-author" type="button"  (click)="onClickApplyFiltersWithAuthor(detail.artistName)">
               {{detail.artistName}}
             </button>
           </div>
-          <div class="container-tags">
+          <div class="container-tags" *ngIf="detail.styles != null">
+            <p>Style</p>
             <button class="button-tags button-style" type="button"  (click)="onClickApplyFiltersWithStyle(style)" *ngFor="let style of detail.styles">
               {{style}}
             </button>
@@ -52,7 +53,7 @@
             </button>
           </div> -->
         </p-header>
-        <div class="description" [innerHtml]='detail.description | bbcodeToHtml '></div>
+        <div class="description" *ngIf="detail.description!= null" [innerHtml]='detail.description | bbcodeToHtml '></div>
     </p-card>
   </p-scrollPanel>
   </ng-template>

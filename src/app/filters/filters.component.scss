@@ -4,10 +4,6 @@
   color: $color-dark;
 }
 
-.metricTitle {
-  color: $color-decoration;
-}
-
 .align {
   display: flex;
   align-items: center !important;
@@ -49,6 +45,8 @@
   height: 40px;
   border-color: $color-element-secondary;
   color: $color-light;
+  font-size: 1.1em;
+  width: 75%;
 }
 
 .button-customize-search:hover {

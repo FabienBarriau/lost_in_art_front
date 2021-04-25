@@ -16,24 +16,38 @@ html {
 .button-tags{
   height: 25px;
   border-radius: 5px;
-  border-style: none;
-  padding: 2px 5px;
+  border-style: solid;
+  padding: 4px 5px;
   margin-left: 10px;
+}
+
+.button-tags:hover{
+  background-color: $color-light-hover
+}
+
+.button-tags:active{
+  background-color: $color-element-primary;
   color: $color-light;
 }
 
 .button-author{
-  background-color: $color-element-primary-analogue-1;
+  border-color: $color-element-primary;
 }
 
 .button-style{
-  background-color: $color-element-primary-analogue-2;
+  border-color: $color-element-primary;
 }
 
 .button-similar-picture{
-  background-color: $color-element-primary;
+  background-color: $color-light;
+  font-size: 1.2em;
   border-style: none;
-  color: $color-light;
+  color: $color-element-primary;
   padding: 5px;
   width: 100%;
+}
+
+.button-similar-picture:hover{
+  background-color: $color-element-primary;
+  color: $color-light;
 }
