@@ -90,4 +90,8 @@ export class RecommandationManagementComponent implements OnInit {
       this.router.navigateByUrl('/home')
     }
 
+    onClickGoToBigPicture(){
+      this.router.navigateByUrl('/home')
+    }
+
 }

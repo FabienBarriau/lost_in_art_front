@@ -20,17 +20,12 @@
   </button>
 </div>
 <div class="button-customize-recommandation-container">
-  <button class="button-customize button-customize-recommandation" type="button"  (click)="displayImportUserImageSettings = true">
-    Recommandation for your own image
-  </button>
-</div>
-<div class="button-customize-recommandation-container">
-  <button class="button-customize button-customize-recommandation" type="button"  (click)="displayImportUserImageSettings = true">
-    Back to big picture
+  <button class="button-customize button-customize-recommandation" type="button"  (click)="onClickGoToBigPicture()">
+    Go to big picture
   </button>
 </div>
 <p-sidebar [(visible)]="displayRecommandationSettings">
-    <h2>Recommandation</h2>
+    <h2>Recommandation settings</h2>
     <div>
       <h3 class="metricTitle">Type of similarity</h3>
       <p-dropdown autoWidth="false" [options]="metrics" [(ngModel)]="selectedMetric" optionLabel="name"></p-dropdown>
@@ -39,10 +34,13 @@
       <h3 class="metricTitle">Number</h3>
       <p-inputNumber [(ngModel)]="nbrRecommandation"></p-inputNumber>
     </div>
-    <button class="button-customize button-customize-recommandation" type="button" (click)="onClickSubmitNewRecommandation()">
-      Update settings
-    </button>
+    <div class="button-customize-recommandation-container">
+      <button class="button-customize button-customize-recommandation" type="button" (click)="onClickSubmitNewRecommandation()">
+        Update settings
+      </button>
+    </div>
+    <h2>Recommandation for your image</h2>
+    <div class="">
+      <p-fileUpload name="myfile[]" customUpload="true" (uploadHandler)="myUploader($event)" accept="image/*" maxFileSize="1000000" chooseLabel="Browse"></p-fileUpload>
+    </div>
 <p-sidebar>
-<!-- <p-dialog header="Recommandation for your image" [(visible)]="displayRecommandationSettings">
-  <p-fileUpload name="myfile[]" customUpload="true" (uploadHandler)="myUploader($event)" accept="image/*" maxFileSize="1000000" chooseLabel="Browse"></p-fileUpload>
-</p-dialog> -->

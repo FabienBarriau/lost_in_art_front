@@ -65,3 +65,61 @@ html {
 .button-customize:hover {
   box-shadow: 0 0 2px 2px $color-element-secondary;
 }
+
+
+// Prime NG Galleria
+body .ui-galleria .ui-galleria-indicators .ui-galleria-indicator.ui-state-highlight button{
+  background: $color-element-primary !important;
+}
+
+body .ui-galleria .ui-galleria-indicators .ui-galleria-indicator button{
+  background: grey !important;
+}
+
+body .ui-link:focus {
+  box-shadow: none !important;
+}
+
+// Prime NG Slider
+body .ui-inputswitch.ui-inputswitch-checked .ui-inputswitch-slider{
+  background: $color-element-secondary !important;
+}
+
+
+body .ui-button {
+    background-color: $color-element-secondary !important;
+    border-color: $color-element-secondary !important;
+    margin: 5px !important;
+}
+
+
+// Prime NG Menu
+body .ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem .ui-menuitem-link:focus{
+  background-color: $color-element-secondary !important;
+  border-color: $color-element-secondary !important;
+}
+
+body .ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem .ui-menuitem-link:visited{
+  background-color: $color-element-secondary !important;
+  border-color: $color-element-secondary !important;
+}
+
+body .ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem .ui-menuitem-link:target{
+  background-color: $color-element-secondary !important;
+  border-color: $color-element-secondary !important;
+}
+
+body .ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem .ui-menuitem-link:active{
+  background-color: $color-element-secondary !important;
+  border-color: $color-element-secondary !important;
+}
+
+body .ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem .ui-menuitem-link:focus-visible{
+  background-color: $color-element-secondary !important;
+  border-color: $color-element-secondary !important;
+}
+
+body .ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem .ui-menuitem-link:focus-within{
+  background-color: $color-element-secondary !important;
+  border-color: $color-element-secondary !important;
+}
