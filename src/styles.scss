@@ -39,17 +39,17 @@ html {
 }
 
 .button-similar-picture{
-  background-color: $color-light;
+  background-color: $color-background;
   font-size: 1.2em;
   border-style: none;
-  color: $color-element-primary;
+  color: $color-element-primary !important;
   padding: 5px;
   width: 100%;
 }
 
 .button-similar-picture:hover{
   background-color: $color-element-primary;
-  color: $color-light;
+  color: $color-light !important;
 }
 
 .button-customize {
@@ -122,4 +122,10 @@ body .ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem .ui-menuitem-link:focus-visible
 body .ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem .ui-menuitem-link:focus-within{
   background-color: $color-element-secondary !important;
   border-color: $color-element-secondary !important;
+}
+
+
+// PrimeNG card
+body .ui-card{
+  background-color: $color-background !important;
 }
