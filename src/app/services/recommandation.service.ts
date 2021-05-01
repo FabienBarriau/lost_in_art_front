@@ -8,14 +8,17 @@ export class RecommandationService {
 
   private _paintingRecommendation = environment.apiUrl.concat('paintingRecommendation');
   private _paintingsDetails = environment.apiUrl.concat('paintingsDetail');
-
-  constructor(private _httpclient: HttpClient) { }
   public imgOfIinterest = new BehaviorSubject([]);
   public imgs = new BehaviorSubject([]);
   public nbrRecommandation: number = 5;
   public metric: string = 'encoding';
   public isUserImage: boolean = false;
   public UserImage: File;
+
+  constructor(private _httpclient: HttpClient) {
+    this.getRecommandation("57727993edc2cb3880dbce26")
+  }
+
 
   getRecommandation(art_id){
     this.isUserImage = false
