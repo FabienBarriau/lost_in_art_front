@@ -66,7 +66,6 @@ export class FiltersComponent implements OnInit{
     });
     this.filtersService.IsgetImageDisabled.subscribe(value => {
       this.IsgetImageDisabled = value
-      console.log(this.IsgetImageDisabled)
     })
     this.isAppliedFilters = false;
   }

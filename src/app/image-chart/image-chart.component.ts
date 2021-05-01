@@ -192,7 +192,6 @@ export class ImageChartComponent{
       }
       this.imgsService.updateSelectPaintings(this.selectedPaintings)
     }
-    console.log('selectedPaintings :', this.selectedPaintings)
   }
 
   resizeCanvasToDisplaySize() {
@@ -200,7 +199,6 @@ export class ImageChartComponent{
     // look up the size the canvas is being displayed
     const width = canvas.clientWidth;
     const height = canvas.clientHeight;
-    console.log(width, height)
     // adjust displayBuffer size to match
     if (canvas.width !== width || canvas.height !== height) {
       // you must pass false here or three.js sadly fights the browser
