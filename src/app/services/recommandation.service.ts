@@ -10,32 +10,8 @@ export class RecommandationService {
   private _paintingsDetails = environment.apiUrl.concat('paintingsDetail');
 
   constructor(private _httpclient: HttpClient) { }
-  public imgOfIinterest = new BehaviorSubject([{
-    "paintingId": "57726f3aedc2cb3880b9eb12",
-    "title": "The Grande Odalisque",
-    "artistName": "Jean Auguste Dominique Ingres",
-    "image": "https://uploads8.wikiart.org/images/jean-auguste-dominique-ingres/the-grande-odalisque-1814.jpg!Large.jpg"
-  }]);
-  public imgs = new BehaviorSubject([
-    {
-      "paintingId": "5772752eedc2cb3880cd9f28",
-      "title": "The Rokeby Venus",
-      "artistName": "Diego Velázquez",
-      "image": "https://uploads8.wikiart.org/images/diego-velazquez/the-rokeby-venus-1648.jpg!Large.jpg"
-    },
-    {
-      "paintingId": "57726e37edc2cb3880b6291e",
-      "title": "Ecce Homo",
-      "artistName": "Caravaggio",
-      "image": "https://uploads3.wikiart.org/images/caravaggio/ecce-homo(1).jpg!Large.jpg",
-    },
-    {
-      "paintingId": "57727d9fedc2cb3880e86053",
-      "title": "Crucification",
-      "artistName": "Ernst Fuchs",
-      "image": "https://uploads1.wikiart.org/images/ernst-fuchs/crucification-1950.jpg!Large.jpg",
-    },
-  ]);
+  public imgOfIinterest = new BehaviorSubject([]);
+  public imgs = new BehaviorSubject([]);
   public nbrRecommandation: number = 5;
   public metric: string = 'encoding';
   public isUserImage: boolean = false;

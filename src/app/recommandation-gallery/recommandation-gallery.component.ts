@@ -45,7 +45,7 @@ export class RecommandationGalleryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.recommandationService.getRecommandation("57727993edc2cb3880dbce26")
   }
 
   get activeIndex(): number {
