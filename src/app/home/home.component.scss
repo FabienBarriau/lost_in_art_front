@@ -1,0 +1,26 @@
+@import "src/_variables.scss";
+
+.centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-enter {
+  transition: box-shadow .3s;
+  border-style: none;
+  border-radius: 5px;
+  background: $color-element-primary;
+  color: $color-light;
+  padding: 5px 10px;
+  margin: 25px;
+  font-size: 1.5em;
+}
+
+.button-enter:hover {
+  box-shadow: 0 0 2px 2px $color-element-primary;
+}
+
+.about-me {
+  display: flex;
+}

@@ -14,8 +14,9 @@ export class HeaderComponent{
 
   ngOnInit() {
       this.items = [
-          {label: 'Home', icon: 'pi pi-fw pi-home', routerLink: ['/home']},
-          {label: 'Recommendation', icon: 'pi pi-fw pi-images', routerLink: ['/recommandation']},
+          {label: 'Home',  routerLink: ['/home']},
+          {label: 'Big wall',  routerLink: ['/big-wall']},
+          {label: 'Similarity', routerLink: ['/similarity']},
           // {label: 'Favorites', icon: 'pi pi-fw pi-heart', routerLink: ['/favorites']},
           // {label: 'Profile', icon: 'pi pi-fw pi-user', routerLink: ['/profile']},
           // {label: 'About', icon: 'pi pi-fw pi-info', routerLink: ['/about']},

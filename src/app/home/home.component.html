@@ -1,11 +1,111 @@
-<div class="p-grid p-nogutter">
-  <div class="p-col-12">
-    <app-filters></app-filters>
+<div class="p-grid p-nogutter test">
+  <div class="p-sm-0 p-md-0 p-lg-2 p-xl-2 align">
   </div>
-  <div class="p-sm-12 p-md-12 p-lg-8 p-xl-8">
-    <app-image-chart></app-image-chart>
+  <div class="p-sm-12 p-md-12 p-lg-8 p-xl-8 align">
+    <div class="centered">
+      <img src="assets/img/WikiArtViz-logo.png" alt="logo">
+    </div>
+    <div>
+      Prepare for a travel inside art ! You will be send in a virtual gallery compose
+      of 13, 000 piece of art from the WikiArt website. In this adventure you will not
+      meet tasteless infinite scrolling, boring pagination, not even weird poping recommendation.
+      Here you can explore a reasonable amount of image at a time and highly customize you travel along the way.
+      You will be lost at the good place !
+    </div>
+    <div class="centered">
+      <button type="button" class="button-enter" (click)="goToBigWall()">
+        Enter
+      </button>
+    </div>
   </div>
-  <div class="p-sm-12 p-md-12 p-lg-4 p-xl-4">
-    <app-image-detail></app-image-detail>
+  <div class="p-sm-0 p-md-0 p-lg-2 p-xl-2 align">
+  </div>
+</div>
+
+<h2>About the project</h2>
+
+<div class="p-sm-12 p-md-12 p-lg-8 p-xl-8 align">
+  I love to go on DeviantArt or Instagram to see of what talented artists are capable of.
+  Often i don't seek for something in particular, i'm like an explorer except, that
+  instead of looking for treasure and gold, i just want to find a great artwort.
+  DeviantArt and Instagram are very good to do this but i have some problem with
+  their way of doing this.
+</div>
+
+<h3>What i don't like:</h3>
+<div class="p-grid p-nogutter test">
+  <div class="p-sm-12 p-md-12 p-lg-4 p-xl-4 align">
+    <p-card  styleClass="ui-card-shadow" header="Infinite scrolling">
+      <p>
+        It's used for its capacity to retain attention,
+        but as a user i don't find this really comfortable, I have the impression to be trapped.
+      </p>
+    </p-card>
+  </div>
+  <div class="p-sm-12 p-md-12 p-lg-4 p-xl-4 align">
+    <p-card  styleClass="ui-card-shadow" header="Classical pagination">
+    <p>
+      It's an effective and well proven method but it's also so much used, that it's a little boring now.
+    </p>
+    </p-card>
+  </div>
+  <div class="p-sm-12 p-md-12 p-lg-4 p-xl-4 align">
+    <p-card  styleClass="ui-card-shadow" header="Recommended content">
+    <p>
+      Of course i'm not against recommendation, but i want to control when i see it and how the content is proposed.
+    </p>
+    </p-card>
+  </div>
+</div>
+
+
+<p>
+  This project is an experiment that aim to propose some alternative to all this problems.
+</p>
+
+
+<h3>Proposed alternatives:</h3>
+<div class="p-grid p-nogutter test">
+  <div class="p-sm-12 p-md-12 p-lg-6 p-xl-6 align">
+    <p-card  styleClass="ui-card-shadow" header="Big wall">
+    <p>
+      What i called a big wall is an area where all images are in the same area,
+      placed according to theirs similarities. For this vizualisation
+      I was higly inspirate by the work of Douglas Duhaime on PixPlot,
+      that provide an astonishing number of images in the same big wall.
+    </p>
+    </p-card>
+  </div>
+  <div class="p-sm-12 p-md-12 p-lg-6 p-xl-6 align">
+    <p-card  styleClass="ui-card-shadow" header="Customizable recommendation">
+    <p>
+      I integrate a recommendation system that work only when the user explicitly ask for it.
+      I also try to give some control on this system with the customization of the metric and the number of recommendation that return the system.
+    </p>
+    </p-card>
+  </div>
+</div>
+
+<h2>About me</h2>
+<div class="p-grid p-nogutter test">
+  <div class="p-sm-12 p-md-12 p-lg-4 p-xl-4 align">
+    <p-card  styleClass="ui-card-shadow" [style]="{width: '200px'}" >
+      <p-header>
+          <img src="assets/img/me.jpg" alt="photo of author">
+      </p-header>
+      <h2>Fabien Barriau</h2>
+      <div>
+        <a href="https://github.com/FabienBarriau">My Github</a>
+      </div>
+      <div>
+        <a href="https://www.linkedin.com/in/fbarriau/">My Linkedin</a>
+      </div>
+    </p-card>
+  </div>
+  <div class="p-sm-12 p-md-12 p-lg-8 p-xl-8 align">
+    I'm a Data scientist based in Toulouse (France),
+    this project is for me a laboratory to improve my skills in development in particulary in web.
+    If you want to contact me for the project (bugs, ideas for new features, etc.) write me here.
+    For others reasons you can send me a message via Linkedin or Github.
   </div>
 </div>

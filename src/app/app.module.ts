@@ -34,20 +34,16 @@ import { FooterComponent } from './footer/footer.component';
 import { BBcodeToHtml } from './pipe/bbcodeToHtml';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
-import { ProfileComponent } from './profile/profile.component';
-import { FavoritesComponent } from './favorites/favorites.component';
 import { RecommandationComponent } from './recommandation/recommandation.component';
-import { AboutComponent } from './about/about.component';
 import { RecommandationGalleryComponent } from './recommandation-gallery/recommandation-gallery.component';
 import { RecommandationManagementComponent } from './recommandation-management/recommandation-management.component';
+import { BigWallComponent } from './big-wall/big-wall.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'favorites', component: FavoritesComponent },
-  { path: 'recommandation', component: RecommandationComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'about', component: AboutComponent }
+  { path: 'big-wall', component: BigWallComponent },
+  { path: 'similarity', component: RecommandationComponent }
 ];
 
 @NgModule({
@@ -60,12 +56,10 @@ const appRoutes: Routes = [
     BBcodeToHtml,
     HeaderComponent,
     HomeComponent,
-    FavoritesComponent,
     RecommandationComponent,
-    ProfileComponent,
-    AboutComponent,
     RecommandationGalleryComponent,
-    RecommandationManagementComponent
+    RecommandationManagementComponent,
+    BigWallComponent
   ],
   imports: [
     BrowserModule,

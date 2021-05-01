@@ -28,7 +28,7 @@ export class ImageDetailComponent implements OnInit {
 
   goToRecommandation(art_id: string){
     this.recommandationService.getRecommandation(art_id)
-    this.router.navigateByUrl('/recommandation')
+    this.router.navigateByUrl('/similarity')
   }
 
   onClickApplyFiltersWithStyle(style: string){
